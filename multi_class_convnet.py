@@ -27,7 +27,7 @@ def get_training_data(train_path, labels_path):
 			features.append(feature_set)
 			n_examples += 1
 
-	labels_df = pd.read_csv("labels.csv")["Finding Labels"]
+	labels_df = pd.read_csv(labels_path)["Finding Labels"]
 	labels = np.zeros(NUM_IMG) # 0 for no finding, 1 for finding.
 
 	# loading all labels
