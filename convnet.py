@@ -42,18 +42,18 @@ def get_training_data(train_path, labels_path):
 	
 X_train, y_train = get_training_data("data/train/", "data/train-labels.csv")
 X_test, y_test = get_training_data("data/test/", "data/test-labels.csv")
+
+print(X_train.shape)
  
 model = Sequential()
 
- 
-model.add(Conv2D(4, (3, 3), activation='relu', input_shape=(1024, 1024, 1), data_format='channels_last'))
-model.add(Conv2D(4, (3, 3), activation='relu'))
+model.add(Conv2D(4, (3, 3), strides=(2,2), activation='relu', input_shape=(1024, 1024, 1), data_format='channels_last'))
 model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Conv2D(4, (3, 3), strides=(2,2), activation='relu'))
 model.add(Dropout(0.25))
  
 model.add(Flatten())
 model.add(Dense(1024, activation='relu'))
-model.add(Dropout(0.5))
 model.add(Dense(1, activation='sigmoid'))
  
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
