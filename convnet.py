@@ -11,7 +11,6 @@ from keras.datasets import mnist
 NUM_IMG = 25
 
 def get_training_data(train_path, labels_path):
-	print(labels_path)
 	train_images = []
 	train_files = []
 	for filename in os.listdir(train_path):
@@ -37,14 +36,11 @@ def get_training_data(train_path, labels_path):
 		else:
 			labels[i] = 1
 	images = np.expand_dims(np.array(features), axis=3).astype('float32') / 255 # adding single channel
-	print(images.shape)
 	return images, labels
 	
 X_train, y_train = get_training_data("data/train/", "data/train-labels.csv")
 X_test, y_test = get_training_data("data/test/", "data/test-labels.csv")
 
-print(X_train.shape)
- 
 model = Sequential()
 
 model.add(Conv2D(4, (3, 3), strides=(2,2), activation='relu', input_shape=(1024, 1024, 1), data_format='channels_last'))
