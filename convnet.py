@@ -1,4 +1,3 @@
-
 import os
 import numpy as np
 import pandas as pd
@@ -27,7 +26,7 @@ def get_training_data(train_path, labels_path):
 			feature_set = np.asarray(train_image)
 			features.append(feature_set)
 
-	labels_df = pd.read_csv(labels_path)#["Finding Labels"]
+	labels_df = pd.read_csv(labels_path) #["Finding Labels"]
 	labels_df = labels_df["Finding Labels"]
 	labels = np.zeros(NUM_IMG) # 0 for no finding, 1 for finding.
 
@@ -43,9 +42,6 @@ def get_training_data(train_path, labels_path):
 	
 X_train, y_train = get_training_data("data/train/", "data/train-labels.csv")
 X_test, y_test = get_training_data("data/test/", "data/test-labels.csv")
- 
-#Y_train = np_utils.to_categorical(y_train, 14)
-#Y_test = np_utils.to_categorical(y_test, 14)
  
 model = Sequential()
 
